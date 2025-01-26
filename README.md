@@ -1,31 +1,25 @@
-Credit Card Sampling Analysis
-Project Overview
+# Credit Card Sampling Analysis
+
+## Project Overview
 This project involves analyzing different sampling techniques to handle imbalanced credit card transaction data and evaluating the performance of various machine learning models on these sampled datasets. The goal is to identify the most effective sampling technique and model combination for predicting fraudulent transactions.
 
-Sampling Techniques Used
-Simple Random Sampling: Selects a subset of individuals randomly from the larger dataset.
-Stratified Sampling: Divides the population into homogeneous subgroups before sampling.
-Cluster Sampling: Divides the population into clusters and randomly selects entire clusters.
-Systematic Sampling: Selects samples based on a fixed periodic interval.
-Multistage Sampling: Involves multiple stages of sampling, typically combining several methods.
-Models Evaluated
-Random Forest Classifier
-Gradient Boosting Classifier
-Logistic Regression
-SVM (Support Vector Machine)
-K-Nearest Neighbors (KNN)
-Requirements
-This project is implemented in Python, using libraries such as Pandas, NumPy, scikit-learn, and imbalanced-learn. Ensure you have these installed:
+## Sampling Techniques Used
+- Simple Random Sampling: Selecting samples randomly from the population.
+- Systematic Sampling: Choosing samples at regular intervals after a random starting point.
+- Cluster Sampling: Randomly selecting entire clusters from the population.
+- Stratified Sampling: Dividing the population into subgroups based on specific criteria.
+- Bootstrap Sampling: Resampling with replacement to generate multiple samples from the     original dataset.
 
-pip install pandas numpy scikit-learn imbalanced-learn
-Dataset
-The dataset used is a CSV file containing credit card transactions, with features labeled from V1 to V28 (PCA transformed features), 'Time', and 'Amount'. The target variable is 'Class', where 1 represents fraudulent transactions and 0 represents non-fraudulent transactions.
+Following the generation of five distinct samples using these techniques, five models were applied to each sample. The accuracies of each model for a given sample are summarized in the following table:
 
-Setup and Execution
-Clone the repository or download the project to your local machine.
-Place your dataset in the root directory or modify the dataset path in the script.
-Run the script using Python:
-python sampling.py
-Check the output CSV file model_sampling_results_pivot.csv for the accuracy results of different models under various sampling techniques.
-Results
-Results are saved in a pivot table format in the model_sampling_results_pivot.csv file, where each row represents a machine learning model and each column a sampling technique. The cells contain the accuracy scores, allowing for easy comparison across different methods.
+| Sample Technique      | Random Forest | Logistic Regression | Naive Bayes      | Decision Trees   | KNN              |
+|-----------------------|---------------|---------------------|------------------|------------------|------------------|
+| Simple Random Sampling| 0.9870        | 0.8831              | 0.7013           | 0.9610           | 0.8701           |
+| Systematic Sampling   | 1.0000        | 0.8926              | 0.7450           | 1.0000           | 0.9329           |
+| Cluster Sampling      | 1.0000        | 0.9670              | 1.0000           | 1.0000           | 0.9890           |
+| Stratified Sampling   | 1.0000        | 0.9030              | 0.7239           | 0.9925           | 0.9552           |
+| Bootstrap Sampling    | 1.0000        | 0.9250              | 0.7500           | 0.9625           | 0.9375           |
+
+In above table, each row corresponds to a sampling technique, and each column represent the accuracy achieved by each model applied to the respective sample generated using that respective technique.
+<br>
+### The RANDOM FOREST outperformed all other models when applied to Stratified Sampling Technique.
